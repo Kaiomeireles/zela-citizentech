@@ -101,6 +101,25 @@ test("rate limit bloqueia excesso de escritas", async () => {
   assert.deepStrictEqual(codes, [201, 201, 201, 429, 429]);
 });
 
+test("em produção, HTTP é redirecionado para HTTPS, mas /health responde 200", async () => {
+  const anterior = process.env.NODE_ENV;
+  process.env.NODE_ENV = "production";
+  try {
+    const store = createStore(fs.mkdtempSync(path.join(os.tmpdir(), "zela-")), null);
+    const s = createApp({ store, adminToken: TOKEN }).listen(0);
+    const url = "http://127.0.0.1:" + s.address().port;
+    const h = { "x-forwarded-proto": "http" };
+    const raiz = await fetch(url + "/", { headers: h, redirect: "manual" });
+    const saude = await fetch(url + "/health", { headers: h, redirect: "manual" });
+    s.close();
+    assert.strictEqual(raiz.status, 301);
+    assert.match(raiz.headers.get("location"), /^https:/);
+    assert.strictEqual(saude.status, 200);
+  } finally {
+    process.env.NODE_ENV = anterior;
+  }
+});
+
 test("cabeçalhos de segurança e arquivos privados", async () => {
   const r = await fetch(base + "/");
   assert.ok(r.headers.get("content-security-policy"));

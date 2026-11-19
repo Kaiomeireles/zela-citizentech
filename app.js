@@ -52,7 +52,8 @@ function createApp({ store, adminToken = process.env.ADMIN_TOKEN, limits = {} } 
   app.set("trust proxy", 1);
 
   app.use((req, res, next) => {
-    if (process.env.NODE_ENV === "production" && req.headers["x-forwarded-proto"] === "http") {
+    // /health fica fora do redirecionamento: a sonda do Azure pode chegar por HTTP e exige 200, não 301.
+    if (process.env.NODE_ENV === "production" && req.path !== "/health" && req.headers["x-forwarded-proto"] === "http") {
       return res.redirect(301, "https://" + req.headers.host + req.originalUrl);
     }
     next();
