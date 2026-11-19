@@ -136,12 +136,12 @@ zela/
 
 ## Equipe
 
-| Nome | Papel |
-|---|---|
-| Guilherme Fernandes de Freitas | Produto e Pesquisa |
-| Henrique Rafael Gomes de Souza | Tecnologia |
-| João Pedro Chizzolini de Freitas | Design e Protótipo |
-| Kaio Vinicius Meireles Alves | Negócio e Operação |
-| Lucas Alves de Souza | Dados e Métricas |
+| Nome | RM | Papel |
+|---|---|---|
+| Guilherme Fernandes de Freitas | RM554323 | Produto e Pesquisa |
+| Henrique Rafael Gomes de Souza | RM553945 | Tecnologia |
+| João Pedro Chizzolini de Freitas | RM553172 | Design e Protótipo |
+| Kaio Vinicius Meireles Alves | RM553282 | Negócio e Operação |
+| Lucas Alves de Souza | RM553956 | Dados e Métricas |
 
 <div align="center"><sub>Projeto acadêmico · FIAP Global Solution 2026.2</sub></div>
