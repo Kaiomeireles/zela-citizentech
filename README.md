@@ -22,7 +22,7 @@ Zeladoria colaborativa: o cidadão reporta buracos, lâmpadas queimadas, lixo e 
 | Item | Resposta |
 |---|---|
 | **Nome do produto** | Zela |
-| **URL do MVP** | https://SEU-APP.azurewebsites.net *(trocar pela URL real do App Service)* |
+| **URL do MVP** | https://zela-kaio-rm553282.azurewebsites.net |
 | **Repositório** | https://github.com/Kaiomeireles/zela-citizentech |
 | **1. Quem é o cidadão beneficiado?** | Moradores de grandes cidades que convivem com problemas de zeladoria na rua e não sabem a quem recorrer, e o agente público que precisa priorizar o que consertar. |
 | **2. Qual problema será resolvido?** | Buracos, lâmpadas queimadas, lixo, calçadas quebradas e alagamentos demoram a ser consertados porque os relatos chegam dispersos e sem prioridade. |
