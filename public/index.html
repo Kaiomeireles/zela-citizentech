@@ -3,11 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Zela — zeladoria colaborativa</title>
-  <meta name="description" content="Reporte buracos, lâmpadas queimadas, lixo e alagamentos. Apoie os relatos da sua rua e acompanhe quando forem resolvidos.">
+  <title>Zela — a sua rua, cuidada de verdade</title>
+  <meta name="description" content="Reporte buracos, lâmpadas queimadas, lixo e alagamentos em menos de um minuto. Apoie os relatos da sua rua e acompanhe quando forem resolvidos.">
   <meta name="theme-color" content="#0f766e">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f766e'/%3E%3Cpath d='M9 22V10h14L9 22h14' stroke='white' stroke-width='3' fill='none'/%3E%3C/svg%3E">
+  <meta property="og:title" content="Zela — a sua rua, cuidada de verdade">
+  <meta property="og:description" content="Zeladoria colaborativa: reporte, apoie e acompanhe os problemas da sua rua.">
+  <meta property="og:image" content="img/hero.svg">
+  <link rel="icon" type="image/svg+xml" href="img/logo-mark.svg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -15,46 +20,79 @@
 
 <header class="topbar">
   <div class="wrap topbar__in">
-    <a class="logo" href="#topo">Zela</a>
+    <a class="brand" href="#topo" aria-label="Zela, início">
+      <img src="img/logo-mark.svg" alt="" width="34" height="34">
+      <span>zela</span>
+    </a>
     <nav class="nav" aria-label="Seções">
+      <a href="#como">Como funciona</a>
       <a href="#mapa">Mapa</a>
-      <a href="#relatos">Relatos</a>
       <a href="#relatar">Relatar</a>
     </nav>
-    <button class="btn btn--ghost btn--sm" id="btn-admin" type="button">Sou administrador</button>
+    <a class="btn btn--sm" href="#relatar">Relatar problema</a>
   </div>
 </header>
 
 <main id="principal">
-  <section class="hero wrap" id="topo">
-    <h1>A sua rua, <span>cuidada de verdade.</span></h1>
-    <p class="lead">Reporte buracos, lâmpadas queimadas, lixo e alagamentos em menos de um minuto. Apoie os relatos dos vizinhos para mostrar o que é prioridade e acompanhe quando for resolvido.</p>
-    <a class="btn btn--lg" href="#relatar">Relatar um problema</a>
-    <p class="aviso">Os relatos marcados como <strong>simulado</strong> são dados fictícios, criados para demonstração.</p>
-  </section>
-
-  <section class="wrap" aria-labelledby="t-ind">
-    <h2 id="t-ind" class="sr">Indicadores</h2>
-    <div class="stats" id="stats" aria-live="polite">
-      <div class="stat"><span class="stat__n" id="s-total">–</span><span class="stat__l">relatos</span></div>
-      <div class="stat"><span class="stat__n" id="s-aberto">–</span><span class="stat__l">abertos</span></div>
-      <div class="stat"><span class="stat__n" id="s-taxa">–</span><span class="stat__l">resolvidos</span></div>
-      <div class="stat"><span class="stat__n" id="s-dias">–</span><span class="stat__l">dias até resolver (média)</span></div>
+  <!-- ENTRADA -->
+  <section class="hero" id="topo">
+    <div class="wrap hero__in">
+      <div class="hero__text">
+        <span class="pill"><i class="live"></i> Zeladoria colaborativa</span>
+        <h1>A sua rua,<br><span>cuidada de verdade.</span></h1>
+        <p class="lead">Viu um buraco, uma lâmpada queimada ou lixo na calçada? Marque no mapa em menos de um minuto. Quanto mais vizinhos apoiam, mais alto o problema sobe na fila.</p>
+        <div class="hero__cta">
+          <a class="btn btn--lg" href="#relatar">Relatar um problema</a>
+          <a class="btn btn--ghost btn--lg" href="#mapa">Ver o mapa</a>
+        </div>
+        <ul class="mini" id="mini" aria-live="polite">
+          <li><strong id="m-total">–</strong> relatos</li>
+          <li><strong id="m-taxa">–</strong> resolvidos</li>
+          <li><strong id="m-dias">–</strong> dias até resolver</li>
+        </ul>
+      </div>
+      <div class="hero__art">
+        <img src="img/hero.svg" alt="Ilustração de um mapa de cidade com pinos marcando problemas" width="560" height="460">
+      </div>
     </div>
   </section>
 
+  <!-- COMO FUNCIONA -->
+  <section class="section wrap" id="como">
+    <h2>Como funciona</h2>
+    <p class="section__lead">Três passos, sem cadastro e sem dar nome, e-mail ou telefone.</p>
+    <ol class="steps">
+      <li class="step">
+        <span class="step__n">1</span>
+        <h3>Marque no mapa</h3>
+        <p>Busque o endereço ou use a sua localização e escolha o tipo de problema.</p>
+      </li>
+      <li class="step">
+        <span class="step__n">2</span>
+        <h3>Vizinhos apoiam</h3>
+        <p>Quem passa pelo mesmo problema toca em “Apoiar”. Os mais apoiados aparecem primeiro.</p>
+      </li>
+      <li class="step">
+        <span class="step__n">3</span>
+        <h3>Acompanhe</h3>
+        <p>O responsável atualiza a situação: aberto, em andamento ou resolvido.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- MAPA -->
   <section class="section wrap" id="mapa">
-    <h2>Mapa dos relatos</h2>
+    <h2>O que está acontecendo na cidade</h2>
     <div class="filtros">
-      <label>Categoria
+      <label>Tipo
         <select id="f-categoria">
-          <option value="">Todas</option>
-          <option value="buraco">Buraco</option>
-          <option value="iluminacao">Iluminação</option>
-          <option value="lixo">Lixo</option>
-          <option value="calcada">Calçada</option>
-          <option value="alagamento">Alagamento</option>
-          <option value="outros">Outros</option>
+          <option value="">Todos</option>
+          <option value="buraco">🕳️ Buraco</option>
+          <option value="iluminacao">💡 Iluminação</option>
+          <option value="lixo">🗑️ Lixo</option>
+          <option value="calcada">🚶 Calçada</option>
+          <option value="alagamento">🌊 Alagamento</option>
+          <option value="outros">📍 Outros</option>
         </select>
       </label>
       <label>Situação
@@ -65,54 +103,65 @@
           <option value="resolvido">Resolvido</option>
         </select>
       </label>
+      <p class="legenda"><i class="dot dot--aberto"></i> aberto <i class="dot dot--em_andamento"></i> em andamento <i class="dot dot--resolvido"></i> resolvido</p>
     </div>
     <div id="map" role="application" aria-label="Mapa com os relatos"></div>
-    <p class="legenda"><i class="dot dot--aberto"></i> aberto <i class="dot dot--em_andamento"></i> em andamento <i class="dot dot--resolvido"></i> resolvido</p>
+    <p class="aviso">Os relatos marcados como <strong>simulado</strong> são dados fictícios, criados para demonstração.</p>
   </section>
 
+  <!-- LISTA -->
   <section class="section wrap" id="relatos">
-    <h2>Relatos mais apoiados</h2>
+    <h2>Mais apoiados</h2>
     <p class="muted" id="msg-lista" role="status"></p>
     <ul class="lista" id="lista"></ul>
   </section>
 
+  <!-- RELATAR -->
   <section class="section wrap" id="relatar">
     <div class="form-card">
       <h2>Relatar um problema</h2>
-      <p class="muted">Não pedimos nome, e-mail nem telefone. Só o que a prefeitura precisa para agir.</p>
+      <p class="muted">Leva menos de um minuto. Não pedimos nenhum dado pessoal.</p>
+
       <form id="form" novalidate>
-        <label class="field">
-          <span>O que está acontecendo?</span>
-          <select name="categoria" required>
-            <option value="">Escolha</option>
-            <option value="buraco">Buraco na rua</option>
-            <option value="iluminacao">Iluminação pública</option>
-            <option value="lixo">Lixo ou entulho</option>
-            <option value="calcada">Calçada quebrada</option>
-            <option value="alagamento">Alagamento ou bueiro</option>
-            <option value="outros">Outro problema</option>
-          </select>
-          <small class="erro" data-for="categoria"></small>
-        </label>
-        <label class="field">
-          <span>Descreva em poucas palavras</span>
-          <textarea name="descricao" rows="3" maxlength="280" placeholder="Ex.: buraco grande na faixa da direita, em frente ao nº 120" required></textarea>
-          <small class="erro" data-for="descricao"></small>
-        </label>
-        <label class="field">
-          <span>Bairro</span>
-          <input type="text" name="bairro" maxlength="60" autocomplete="off" required>
-          <small class="erro" data-for="bairro"></small>
-        </label>
-        <div class="field">
-          <span>Onde fica?</span>
-          <div class="loc">
-            <button class="btn btn--ghost" type="button" id="btn-loc">Usar minha localização</button>
-            <span class="muted" id="loc-info">ou toque no mapa abaixo</span>
+        <fieldset class="bloco">
+          <legend><span class="n">1</span> Onde fica?</legend>
+          <div class="busca">
+            <input type="search" id="busca" placeholder="Digite o endereço. Ex.: Av. Faria Lima, 1000" autocomplete="off" aria-label="Buscar endereço">
+            <button class="btn btn--ghost" type="button" id="btn-busca">Buscar</button>
+            <button class="btn btn--ghost" type="button" id="btn-loc">📍 Usar minha localização</button>
           </div>
           <div id="map-picker" role="application" aria-label="Mapa para marcar o local do problema"></div>
+          <p class="muted" id="loc-info">Ou toque no mapa para marcar o ponto exato.</p>
           <small class="erro" data-for="lugar"></small>
-        </div>
+        </fieldset>
+
+        <fieldset class="bloco">
+          <legend><span class="n">2</span> Que tipo de problema é?</legend>
+          <div class="cats" id="cats">
+            <label class="cat"><input type="radio" name="categoria" value="buraco"><span><em>🕳️</em>Buraco</span></label>
+            <label class="cat"><input type="radio" name="categoria" value="iluminacao"><span><em>💡</em>Iluminação</span></label>
+            <label class="cat"><input type="radio" name="categoria" value="lixo"><span><em>🗑️</em>Lixo</span></label>
+            <label class="cat"><input type="radio" name="categoria" value="calcada"><span><em>🚶</em>Calçada</span></label>
+            <label class="cat"><input type="radio" name="categoria" value="alagamento"><span><em>🌊</em>Alagamento</span></label>
+            <label class="cat"><input type="radio" name="categoria" value="outros"><span><em>📍</em>Outro</span></label>
+          </div>
+          <small class="erro" data-for="categoria"></small>
+        </fieldset>
+
+        <fieldset class="bloco">
+          <legend><span class="n">3</span> Conte em poucas palavras</legend>
+          <label class="field">
+            <span>O que você viu?</span>
+            <textarea name="descricao" rows="3" maxlength="280" placeholder="Ex.: buraco grande na faixa da direita, em frente ao nº 120" required></textarea>
+            <small class="erro" data-for="descricao"></small>
+          </label>
+          <label class="field">
+            <span>Bairro</span>
+            <input type="text" name="bairro" maxlength="60" autocomplete="off" placeholder="Preenchido pelo mapa, se possível" required>
+            <small class="erro" data-for="bairro"></small>
+          </label>
+        </fieldset>
+
         <button class="btn btn--lg btn--block" type="submit" id="btn-enviar">Enviar relato</button>
         <div class="status" id="status-form" role="status" aria-live="polite" hidden></div>
       </form>
@@ -121,15 +170,18 @@
 </main>
 
 <footer class="footer">
-  <div class="wrap">
-    <strong>Zela</strong> · projeto acadêmico (FIAP Global Solution 2026) · dados de demonstração são simulados.
-    <br>Não coletamos dados pessoais. A localização é arredondada a cerca de 10 metros.
+  <div class="wrap footer__in">
+    <a class="brand brand--footer" href="#topo"><img src="img/logo-mark.svg" alt="" width="30" height="30"><span>zela</span></a>
+    <p>Projeto acadêmico · FIAP Global Solution 2026. Dados de demonstração são simulados.<br>
+    Não coletamos dados pessoais. A localização é arredondada a cerca de 10 metros.<br>
+    Mapa © colaboradores do OpenStreetMap, © CARTO.</p>
+    <button class="link" id="btn-admin" type="button">Acesso da equipe</button>
   </div>
 </footer>
 
 <dialog id="dlg-admin" aria-labelledby="t-admin">
   <form id="form-admin">
-    <h2 id="t-admin">Acesso de administrador</h2>
+    <h2 id="t-admin">Acesso da equipe</h2>
     <p class="muted">Cole o token fornecido pela equipe. Ele fica só nesta aba do navegador.</p>
     <label class="field"><span>Token</span><input type="password" id="token" autocomplete="off" required></label>
     <small class="erro" id="erro-admin"></small>
@@ -141,6 +193,7 @@
 </dialog>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

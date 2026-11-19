@@ -27,7 +27,7 @@ Zeladoria colaborativa: o cidadão reporta buracos, lâmpadas queimadas, lixo e 
 | **1. Quem é o cidadão beneficiado?** | Moradores de grandes cidades que convivem com problemas de zeladoria na rua e não sabem a quem recorrer, e o agente público que precisa priorizar o que consertar. |
 | **2. Qual problema será resolvido?** | Buracos, lâmpadas queimadas, lixo, calçadas quebradas e alagamentos demoram a ser consertados porque os relatos chegam dispersos e sem prioridade. |
 | **3. Como a solução funcionará?** | O cidadão marca o local no mapa e descreve o problema, sem informar dados pessoais. Os vizinhos apoiam o relato, o que o leva ao topo da lista. O administrador atualiza o status (aberto, em andamento, resolvido) e o cidadão acompanha. |
-| **4. Quais tecnologias serão empregadas?** | Node.js + Express no **Azure App Service**, front-end em HTML/CSS/JS com Leaflet e OpenStreetMap, **GitHub Actions** (CI/CD), **Application Insights** (monitoramento). Próximos componentes: visão computacional para classificar a foto, IA generativa para resumir e priorizar, pipeline de dados abertos (156), RPA para encaminhar ao órgão, sensor físico. |
+| **4. Quais tecnologias serão empregadas?** | Node.js + Express no **Azure App Service**, front-end em HTML/CSS/JS com Leaflet, OpenStreetMap (estilo CARTO, sem chave de API), busca de endereço e bairro automático (Nominatim), **GitHub Actions** (CI/CD), **Application Insights** (monitoramento). Próximos componentes: visão computacional para classificar a foto, IA generativa para resumir e priorizar, pipeline de dados abertos (156), RPA para encaminhar ao órgão, sensor físico. |
 | **5. Quem participará do ecossistema?** | Cidadãos, associações de bairro, prefeituras e concessionárias de serviços (iluminação, limpeza urbana), e empresas que contratam o painel de gestão. |
 | **6. Como o impacto será medido e ampliado?** | Taxa de resolução, dias médios até resolver, relatos por bairro e apoios por relato (já calculados em `/api/stats`). Expansão por bairro e por cidade, com venda do painel a prefeituras e condomínios. |
 | **ODS conectados** | ODS 11 (cidades e comunidades sustentáveis) e ODS 16 (meta 16.6: instituições eficazes, responsáveis e transparentes) |
@@ -51,8 +51,9 @@ Zeladoria colaborativa: o cidadão reporta buracos, lâmpadas queimadas, lixo e 
 
 ## Funcionalidades
 
-- Mapa com todos os relatos, coloridos por situação, e filtros por categoria e situação.
-- Formulário de relato com localização pelo GPS ou por toque no mapa. Sem cadastro e sem dados pessoais.
+- Mapa com pinos por categoria, coloridos por situação e agrupados, com filtros por tipo e situação.
+- Busca de endereço e preenchimento automático do bairro.
+- Formulário em 3 passos (onde, tipo, descrição) com localização por busca, GPS ou toque no mapa. Sem cadastro e sem dados pessoais.
 - Apoio aos relatos dos vizinhos (um por navegador) e ranking dos mais apoiados.
 - Indicadores de impacto: total, abertos, taxa de resolução e dias médios até resolver.
 - Painel de administrador (por token) para mudar o status dos relatos.

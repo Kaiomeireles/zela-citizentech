@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 460" role="img" aria-label="Mapa de uma cidade com problemas marcados">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e6f6f3"/><stop offset="1" stop-color="#cfece7"/></linearGradient>
+    <filter id="sh" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#0b3d38" flood-opacity=".25"/></filter>
+  </defs>
+  <rect width="560" height="460" rx="28" fill="url(#bg)"/>
+  <!-- quadras -->
+  <g fill="#f7fbfa">
+    <rect x="30" y="34" width="120" height="86" rx="8"/><rect x="170" y="34" width="150" height="86" rx="8"/><rect x="340" y="34" width="190" height="86" rx="8"/>
+    <rect x="30" y="140" width="120" height="110" rx="8"/><rect x="340" y="140" width="190" height="110" rx="8"/>
+    <rect x="30" y="270" width="190" height="80" rx="8"/><rect x="240" y="270" width="80" height="80" rx="8"/><rect x="340" y="270" width="190" height="80" rx="8"/>
+    <rect x="30" y="370" width="120" height="60" rx="8"/><rect x="170" y="370" width="150" height="60" rx="8"/><rect x="340" y="370" width="190" height="60" rx="8"/>
+  </g>
+  <!-- parque e rio -->
+  <rect x="170" y="140" width="150" height="110" rx="8" fill="#bfe7c8"/>
+  <circle cx="215" cy="190" r="14" fill="#8fd1a0"/><circle cx="262" cy="210" r="18" fill="#8fd1a0"/><circle cx="292" cy="170" r="11" fill="#8fd1a0"/>
+  <path d="M0 356c90 14 150-16 250-6s190 22 310-8v26c-120 30-210 18-310 8S90 396 0 384z" fill="#a9d8ef" opacity=".85"/>
+  <!-- rota -->
+  <path d="M90 90 L90 195 L250 195 L250 310 L430 310" fill="none" stroke="#0f766e" stroke-width="5" stroke-dasharray="2 11" stroke-linecap="round" opacity=".55"/>
+  <!-- pinos -->
+  <g filter="url(#sh)">
+    <g transform="translate(90 90)"><path d="M0-34c-12 0-20 8-20 19 0 15 20 36 20 36s20-21 20-36c0-11-8-19-20-19z" fill="#d9480f"/><circle cx="0" cy="-15" r="8" fill="#fff"/></g>
+    <g transform="translate(432 84)"><path d="M0-34c-12 0-20 8-20 19 0 15 20 36 20 36s20-21 20-36c0-11-8-19-20-19z" fill="#e8a400"/><circle cx="0" cy="-15" r="8" fill="#fff"/></g>
+    <g transform="translate(250 196)"><path d="M0-34c-12 0-20 8-20 19 0 15 20 36 20 36s20-21 20-36c0-11-8-19-20-19z" fill="#d9480f"/><circle cx="0" cy="-15" r="8" fill="#fff"/></g>
+    <g transform="translate(90 306)"><path d="M0-34c-12 0-20 8-20 19 0 15 20 36 20 36s20-21 20-36c0-11-8-19-20-19z" fill="#e8a400"/><circle cx="0" cy="-15" r="8" fill="#fff"/></g>
+    <g transform="translate(430 312)"><path d="M0-34c-12 0-20 8-20 19 0 15 20 36 20 36s20-21 20-36c0-11-8-19-20-19z" fill="#2f9e44"/><circle cx="0" cy="-15" r="8" fill="#fff"/><path d="M-4.5-15l3.3 3.3 6-6.6" fill="none" stroke="#2f9e44" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+  </g>
+</svg>
